@@ -129,6 +129,17 @@ export class HomeComponent implements OnInit {
       });  
   }
   
+    myTime(date:any){
+    let currentDate =new Date();
+    let time = currentDate.getTime();
+    let diff = time - +date;
+    var minutes = Math.floor(diff / 60000);
+    var hours = Math.floor(minutes / 60);
+    if(hours>23) return (hours/24).toString+' days ago';
+    if(minutes>59) return (minutes/60).toString+' hours ago';
+    return minutes.toString()+' minute ago';
+  }
+  
   showButton(){
     let reply = this.myFormGroup.controls['reply'].value;
     // console.log(reply);
